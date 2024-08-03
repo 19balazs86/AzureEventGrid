@@ -1,4 +1,4 @@
-namespace NamespacesWorker;
+namespace NamespacesWorker.Workers;
 
 public class Worker : BackgroundService
 {
