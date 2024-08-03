@@ -19,6 +19,7 @@ public static class Program
         // Add services to the container
         {
             services.AddHostedService<SenderWorker>();
+            services.AddHostedService<ReceiverWorker>();
 
             services.AddAzureClients(clients =>
             {

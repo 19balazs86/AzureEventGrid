@@ -23,13 +23,13 @@ public sealed class SenderWorker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            CloudEvent[] cloudEvents = createCloudEvents(3).ToArray();
+            CloudEvent[] cloudEvents = createCloudEvents(5).ToArray();
 
             Response response = await _senderClient.SendAsync(cloudEvents, stoppingToken);
 
             _logger.LogInformation("Events are sent with status: {status}", response.Status);
 
-            await Task.Delay(Random.Shared.Next(500, 1_500), stoppingToken);
+            await Task.Delay(Random.Shared.Next(500, 2_000), stoppingToken);
         }
     }
 
