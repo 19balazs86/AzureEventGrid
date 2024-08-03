@@ -1,5 +1,6 @@
 using Azure;
 using Microsoft.Extensions.Azure;
+using NamespacesWorker.Miscellaneous;
 using NamespacesWorker.Workers;
 
 namespace NamespacesWorker;
@@ -17,11 +18,12 @@ public static class Program
 
         // Add services to the container
         {
-            services.AddHostedService<Worker>();
+            services.AddHostedService<SenderWorker>();
 
             services.AddAzureClients(clients =>
             {
                 clients.AddEventGridSenderClient(settings.EndpointUri, settings.Topic, new AzureKeyCredential(settings.AccessKey));
+
                 clients.AddEventGridReceiverClient(settings.EndpointUri, settings.Topic, settings.Subscription, new AzureKeyCredential(settings.AccessKey));
             });
         }

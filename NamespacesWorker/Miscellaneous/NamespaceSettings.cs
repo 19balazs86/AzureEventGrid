@@ -1,4 +1,4 @@
-﻿namespace NamespacesWorker;
+﻿namespace NamespacesWorker.Miscellaneous;
 
 public sealed class NamespaceSettings
 {
