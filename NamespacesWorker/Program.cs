@@ -20,6 +20,7 @@ public static class Program
         {
             services.AddHostedService<SenderWorker>();
             services.AddHostedService<ReceiverWorker>();
+            services.AddHostedService<ReceiverSimpleWorker>();
 
             services.AddAzureClients(clients =>
             {
