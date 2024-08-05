@@ -8,7 +8,7 @@ This repository contains 2 projects to explore Azure Event Grid -> Namespaces
 ## Prerequisites
 
 - To create any kind of Event Grid services, first you need to navigate to your Azure Subscription / Settings / Resource providers to [register the Microsoft.EventGrid provider](https://learn.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal#register-the-event-grid-resource-provider)
-- On Azure Portal navigate to "Event Grid Namespaces" using the search resources text-box in the middle
+- Navigate to "Event Grid Namespaces" on Azure Portal using the 'search resources' text-box in the middle
 - Create a namespace with default values
 
 ## Projects in the solution
@@ -44,15 +44,15 @@ This repository contains 2 projects to explore Azure Event Grid -> Namespaces
 
 #### Namespaces - Topic
 
-- [**Quick start**: Send and receive messages from an Event Grid namespace topic](https://learn.microsoft.com/en-us/azure/event-grid/event-grid-dotnet-get-started-pull-delivery)
+- Quick start: [Send and receive messages from an Event Grid namespace topic](https://learn.microsoft.com/en-us/azure/event-grid/event-grid-dotnet-get-started-pull-delivery)
 - [Azure.Messaging.EventGrid.Namespaces - Namespace](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.eventgrid.namespaces?view=azure-dotnet)
 - [Source code + Samples](https://github.com/Azure/azure-sdk-for-net/tree/Azure.Messaging.EventGrid.Namespaces_1.0.0/sdk/eventgrid/Azure.Messaging.EventGrid.Namespaces/samples) 👤*Azure SDK*
 
 #### Namespaces - MQTT
 
-- [**Quick start**: Publish and subscribe to MQTT messages on Event Grid Namespace](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-publish-and-subscribe-portal) 📚*MS-learn*
+- Quick start: [Publish and subscribe to MQTT messages on Event Grid Namespace](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-publish-and-subscribe-portal) 📚*MS-learn*
   - [Client authentication with the uploaded certificate](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-certificate-chain-client-authentication) 📚*MS-learn*
 - [Download MQTT Client](https://mqttx.app)
 - Samples
-  - [MQTTnet + samples](https://github.com/dotnet/MQTTnet) 👤*.NET*
+  - [MQTTnet + samples](https://github.com/dotnet/MQTTnet) 👤*DotNET*
   - [MqttApplicationSamples](https://github.com/Azure-Samples/MqttApplicationSamples) 👤*Azure-Samples*
