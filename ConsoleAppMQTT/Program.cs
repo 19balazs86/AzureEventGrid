@@ -7,7 +7,7 @@ public static class Program
         using var cancellationTokenSource = new CancellationTokenSource();
 
         Task exampleTask = MqttClientExample.Run(cancellationTokenSource.Token);
-        // Task exampleTask = MqttManagedClientExample.Run(cancellationTokenSource.Token);
+        // Task exampleTask = ManagedMqttClientExample.Run(cancellationTokenSource.Token);
 
         await Task.WhenAny(exampleTask, readKey());
 
