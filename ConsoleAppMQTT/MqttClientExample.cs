@@ -1,8 +1,11 @@
 ﻿using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Server;
+using System.Text.Json;
 
 namespace ConsoleAppMQTT;
+
+public sealed record Message(string Content);
 
 public static class MqttClientExample
 {
@@ -37,10 +40,12 @@ public static class MqttClientExample
 
     private static async Task client_MessageReceived(MqttApplicationMessageReceivedEventArgs arg)
     {
-        string topic   = arg.ApplicationMessage.Topic;
-        string payload = arg.ApplicationMessage.ConvertPayloadToString();
+        string topic = arg.ApplicationMessage.Topic;
+        //string payload = arg.ApplicationMessage.ConvertPayloadToString();
 
-        await Console.Out.WriteLineAsync($"'{topic}' - Payload: '{payload}'");
+        Message? messageObject = JsonSerializer.Deserialize<Message>(arg.ApplicationMessage.PayloadSegment);
+
+        await Console.Out.WriteLineAsync($"'{topic}' - Payload: '{messageObject}'");
 
         // await arg.AcknowledgeAsync(CancellationToken.None); // Not sure about it
     }
@@ -49,16 +54,28 @@ public static class MqttClientExample
     {
         while (!cancelToken.IsCancellationRequested)
         {
-            string payload = $"Current time: {DateTime.Now.ToLongTimeString()}";
-
-            MqttApplicationMessage message = new MqttApplicationMessageBuilder()
-                .WithTopic(Settings.Topic)
-                .WithPayload(payload)
-                .Build();
+            MqttApplicationMessage message = createMessage();
 
             MqttClientPublishResult publishResult = await client.PublishAsync(message);
 
             await Task.WhenAny(Task.Delay(2_000, cancelToken)); // No TaskCanceledException
         }
+    }
+
+    private static MqttApplicationMessage createMessage()
+    {
+        string payload = $"Current time: {DateTime.Now.ToLongTimeString()}";
+
+        var messageObject = new Message(payload);
+
+        byte[] messageBytes = JsonSerializer.SerializeToUtf8Bytes(messageObject);
+
+        MqttApplicationMessage message = new MqttApplicationMessageBuilder()
+            .WithTopic(Settings.Topic)
+            .WithPayload(messageBytes)
+            //.WithPayload(payload) // You can simply send a Payload as string
+            .Build();
+
+        return message;
     }
 }
