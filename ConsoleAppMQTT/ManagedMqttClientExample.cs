@@ -6,6 +6,7 @@ using System.Text.Json;
 
 namespace ConsoleAppMQTT;
 
+// Samples: https://github.com/dotnet/MQTTnet/tree/master/Samples/ManagedClient
 public static class ManagedMqttClientExample
 {
     public static async Task Run(CancellationToken cancelToken)

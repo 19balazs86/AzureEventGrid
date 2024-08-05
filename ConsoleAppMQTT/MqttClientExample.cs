@@ -7,6 +7,7 @@ namespace ConsoleAppMQTT;
 
 public sealed record Message(string Content);
 
+// Samples: https://github.com/dotnet/MQTTnet/tree/master/Samples/Client
 public static class MqttClientExample
 {
     public static async Task Run(CancellationToken cancelToken)
