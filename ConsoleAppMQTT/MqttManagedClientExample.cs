@@ -10,6 +10,7 @@ public static class MqttManagedClientExample
 {
     public static async Task Run(CancellationToken cancelToken)
     {
+        // --> Configuration
         MqttClientOptions clientOptions = Settings.GetMqttClientOptions();
 
         ManagedMqttClientOptions managedClientOptions = new ManagedMqttClientOptionsBuilder()
@@ -18,8 +19,10 @@ public static class MqttManagedClientExample
 
         var mqttFactory = new MqttFactory();
 
+        // --> Create client
         using IManagedMqttClient client = mqttFactory.CreateManagedMqttClient();
 
+        // --> Start client
         await client.StartAsync(managedClientOptions);
 
         Console.WriteLine("Connect started");
@@ -35,6 +38,7 @@ public static class MqttManagedClientExample
         // --> Wait for the publisher until cancelToken closed
         await publisherTask;
 
+        // --> Disconnect
         // Before stop the client, make sure no pending messages
         SpinWait.SpinUntil(() => client.PendingApplicationMessagesCount == 0, TimeSpan.FromSeconds(5));
 

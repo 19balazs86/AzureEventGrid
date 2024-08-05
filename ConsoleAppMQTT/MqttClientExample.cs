@@ -11,12 +11,15 @@ public static class MqttClientExample
 {
     public static async Task Run(CancellationToken cancelToken)
     {
+        // --> Configuration
         MqttClientOptions clientOptions = Settings.GetMqttClientOptions();
 
         var mqttFactory = new MqttFactory();
 
+        // --> Create client
         using IMqttClient client = mqttFactory.CreateMqttClient();
 
+        // --> Connect with client
         MqttClientConnectResult connectResult = await client.ConnectAsync(clientOptions);
 
         Console.WriteLine($"ConnectResult: {connectResult.ResultCode}");
