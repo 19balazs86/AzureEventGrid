@@ -14,7 +14,7 @@ public static class Program
         IServiceCollection services  = builder.Services;
         IConfiguration configuration = builder.Configuration;
 
-        NamespaceSettings settings = NamespaceSettings.CreateFrom(configuration);
+        NamespaceSettings settings = configuration.GetConfigurationSection<NamespaceSettings>()!;
 
         // Add services to the container
         {
