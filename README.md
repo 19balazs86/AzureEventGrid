@@ -40,12 +40,12 @@ This repository contains 2 projects to explore Azure Event Grid -> Namespaces
 
 #### Event Grid - General
 
-- [Documentation](https://learn.microsoft.com/en-us/azure/event-grid) 📚*MS-Learn*
+- [Documentation](https://learn.microsoft.com/en-us/azure/event-grid) | [Pricing](https://azure.microsoft.com/en-us/pricing/details/event-grid) 📚*MS-Learn*
 
 #### Namespaces - Topic
 
-- Quick start: [Send and receive messages via Namespace Topic](https://learn.microsoft.com/en-us/azure/event-grid/event-grid-dotnet-get-started-pull-delivery)
-- [Azure.Messaging.EventGrid.Namespaces - Namespace](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.eventgrid.namespaces?view=azure-dotnet)
+- Quick start: [Send and receive messages via Namespace Topic](https://learn.microsoft.com/en-us/azure/event-grid/event-grid-dotnet-get-started-pull-delivery) 📚*MS-learn*
+- [Azure.Messaging.EventGrid.Namespaces - Namespace](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.eventgrid.namespaces?view=azure-dotnet) 📚*MS-learn*
 - [Source code + Samples](https://github.com/Azure/azure-sdk-for-net/tree/Azure.Messaging.EventGrid.Namespaces_1.0.0/sdk/eventgrid/Azure.Messaging.EventGrid.Namespaces/samples) 👤*Azure SDK*
 
 #### Namespaces - MQTT
