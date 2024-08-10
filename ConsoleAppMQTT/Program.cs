@@ -4,27 +4,28 @@ public static class Program
 {
     public static async Task Main(string[] args)
     {
-        using var cancellationTokenSource = new CancellationTokenSource();
+        Console.WriteLine("Press Ctrl+C to stop Mqtt client");
 
-        Task exampleTask = MqttClientExample.Run(cancellationTokenSource.Token);
-        // Task exampleTask = ManagedMqttClientExample.Run(cancellationTokenSource.Token);
+        using var cancellationTokenSource = cancelKeyPress();
 
-        await Task.WhenAny(exampleTask, readKey());
+        await MqttClientExample.Run(cancellationTokenSource.Token);
 
-        cancellationTokenSource.Cancel();
-
-        Console.WriteLine("Program is closing");
-
-        await exampleTask; // Wait for closing the connection
-
-        Console.WriteLine("End of MQTT example");
+        // await ManagedMqttClientExample.Run(cancellationTokenSource.Token);
     }
 
-    private static Task readKey()
+    private static CancellationTokenSource cancelKeyPress()
     {
-        Console.WriteLine("Press any key to stop");
-        Console.ReadKey(true);
+        var cancellationTokenSource = new CancellationTokenSource();
 
-        return Task.CompletedTask;
+        Console.CancelKeyPress += (object? sender, ConsoleCancelEventArgs eventArgs) =>
+        {
+            Console.WriteLine("Program is closing");
+
+            eventArgs.Cancel = true; // The current process continues, not killing the app. Mqtt client can disconnect properly
+
+            cancellationTokenSource.Cancel();
+        };
+
+        return cancellationTokenSource;
     }
 }
