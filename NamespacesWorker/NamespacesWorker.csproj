@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Messaging.EventGrid.Namespaces" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.4" />
+    <PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>
 </Project>
