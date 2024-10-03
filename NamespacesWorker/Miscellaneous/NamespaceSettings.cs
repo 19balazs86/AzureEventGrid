@@ -2,7 +2,7 @@
 
 public sealed class NamespaceSettings : IConfigOptions
 {
-    public static string SectionName => "EventGridNamespace";
+    public static string SectionName { get; } = "EventGridNamespace";
 
     public required string EndpointUrl { get; init; }
     public required string AccessKey { get; init; }
