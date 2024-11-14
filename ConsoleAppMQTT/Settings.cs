@@ -33,9 +33,11 @@ public static class Settings
 
     private static X509Certificate2[] getClientCertificates()
     {
-        X509Certificate2 certificate = X509Certificate2.CreateFromPemFile(CertPemFilePath, KeyPemFilePath);
+        var certificate = X509Certificate2.CreateFromPemFile(CertPemFilePath, KeyPemFilePath);
 
-        certificate = new X509Certificate2(certificate.Export(X509ContentType.Pkcs12));
+        byte[] bytes = certificate.Export(X509ContentType.Pkcs12);
+
+        certificate = X509CertificateLoader.LoadPkcs12(bytes, password: null);
 
         return [certificate];
     }
